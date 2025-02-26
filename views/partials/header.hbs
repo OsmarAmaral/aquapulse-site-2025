@@ -1,0 +1,269 @@
+ <Style>
+    /* Estilo Geral do Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: transparent;
+    padding: 0 20px;
+    margin: 0;
+}
+
+/* Logo e Título */
+#logo-container {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 60px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+#titulo-principal {
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+    font-size: 35px;
+}
+
+/* Links do Menu Central */
+.header-links {
+    text-decoration: none;
+    font-family: "Bebas Neue", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+    margin: 15px;
+    font-size: 18px;
+    display: inline-block;
+    padding-bottom: 3px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header-links::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #28a745; /* Verde */
+    transition: width 0.3s ease-in-out;
+}
+
+.header-links:hover {
+    color: #28a745; /* Verde */
+}
+
+.header-links:hover::after {
+    width: 100%;
+}
+
+/* Ícone do Menu (Hambúrguer) */
+#menu-icon-container {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+#menu-icon {
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#menu-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Menu Dropdown */
+#menu-container {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 10vh; /* Menos espaço do topo */
+    right: 20px; /* Alinhado ao canto direito */
+    width: 250px; /* Menu mais estreito */
+    background-color: #0d0d0d; /* Fundo escuro */
+    color: #fff; /* Texto branco */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); /* Sombra suave */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 20px 15px; /* Mais espaçamento interno */
+    flex-direction: column; /* Layout em coluna */
+    z-index: 1000; /* Certifica que está acima de outros elementos */
+    max-height: 400px; /* Limita a altura do menu */
+    overflow-y: auto; /* Permite o scroll quando o conteúdo exceder a altura */
+}
+
+/* Links dentro do Menu */
+#menu-container a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    padding: 10px 20px; /* Espaçamento interno */
+    display: block; /* Cada link ocupa uma linha */
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease; /* Transição suave */
+    cursor: pointer;
+}
+
+/* Hover nos Links */
+#menu-container a:hover {
+    background-color: #28a745; /* Verde */
+    color: #fff; /* Texto branco */
+    border-radius: 5px; /* Arredonda as bordas no hover */
+}
+
+/* Scroll dentro do Menu - melhor aparência */
+#menu-list-container {
+    max-height: 300px; /* Limita a altura da área de scroll */
+    overflow-y: scroll; /* Ativa o scroll vertical */
+    scrollbar-width: thin; /* Scroll mais fino */
+    scrollbar-color: #28a745 #0d0d0d; /* Cor do scroll (verde com fundo escuro) */
+}
+
+#menu-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#menu-list-container::-webkit-scrollbar-thumb {
+    background-color: #28a745; /* Cor do "polegar" do scroll */
+    border-radius: 10px;
+}
+
+#menu-list-container::-webkit-scrollbar-track {
+    background-color: #0d0d0d; /* Fundo do track */
+}
+
+/* Animação de Aparecer e Desaparecer */
+#menu-container.show {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#menu-container.hide {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+/* Esconder os links no modo mobile */
+@media (max-width: 768px) {
+    #menu-links {
+        display: none; /* Esconde os links principais */
+    }
+
+    #logo-container {
+        flex-direction: column; /* Organiza o logo e título em coluna */
+        align-items: center;
+        text-align: center;
+    }
+
+    #menu-icon-container {
+        display: flex;
+    }
+
+    #menu-container {
+        display: none;
+        position: absolute;
+        top: 10vh;
+        right: 20px;
+        width: 250px;
+        background-color: #0d0d0d;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+        border-radius: 8px;
+        padding: 20px 15px;
+        flex-direction: column;
+        z-index: 1000;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    #menu-container.show {
+        display: flex;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    #menu-container.hide {
+        animation: fadeOut 0.3s ease-in-out;
+    }
+}
+
+ </Style>
+<header>
+    <div id="logo-container">
+        <a href="/">
+            <img id="logo" src="/img/logo.png" alt="Logo AquaPulse">
+        </a>
+        <h1 id="titulo-principal">AquaPulse</h1>
+    </div>
+
+    <div id="menu-links">
+        <a class="header-links" href="index.html">Sobre</a>
+        <a class="header-links" href="produtos.html">Produto</a>
+        <a class="header-links" href="suporte.php">Suporte</a>
+        <a class="header-links" href="perguntas-frequentes.php">FAQ</a>
+    </div>
+
+    <div id="menu-icon-container">
+        <i class="bi bi-list" id="menu-icon"></i>
+    </div>
+
+    <!-- Menu Dropdown -->
+    <div id="menu-container">
+        <div id="menu-list-container">
+            <h1 id="mobile-title">AquaPulse</h1>
+            <a class="header-links" href="index.html">Sobre</a>
+            <a class="header-links" href="produtos.html">Produto</a>
+            <a class="header-links" href="suporte.php">Suporte</a>
+            <a class="header-links" href="perguntas-frequentes.php">FAQ</a>
+        </div>
+    </div>
+</header>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.getElementById("menu-icon");
+        const menuContainer = document.getElementById("menu-container");
+
+        menuIcon.addEventListener("click", function () {
+            if (menuContainer.style.display === "flex") {
+                menuContainer.style.display = "none";
+            } else {
+                menuContainer.style.display = "flex";
+            }
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener("click", function (event) {
+            if (!menuContainer.contains(event.target) && !menuIcon.contains(event.target)) {
+                menuContainer.style.display = "none";
+            }
+        });
+    });
+</script>
